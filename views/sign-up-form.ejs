@@ -2,15 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>Sign Up</title>
 </head>
 <body>
   <h1>Sign Up</h1>
   <form action="/sign-up" method="POST">
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name" value="<%= first_name || '' %>"><br>
+
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" name="last_name" value="<%= last_name || '' %>"><br>
+
     <label for="username">Username</label>
-    <input id="username" name="username" placeholder="username" type="text" />
+    <input id="username" name="username" placeholder="username" type="text" value="<%= username || '' %>" /><br>
+
     <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
+    <input id="password" name="password" type="password" /><br>
+
+    <label for="confirmPassword">Confirm Password</label>
+    <input id="confirmPassword" name="confirmPassword" type="password" /><br>
+
+    <% if (errorMessage) { %>
+      <div style="color: red; font-weight: bold;">
+          <%= errorMessage %> 
+      </div>
+    <% } %>
+
     <button>Sign Up</button>
   </form>
 </body>

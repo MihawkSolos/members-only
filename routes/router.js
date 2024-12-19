@@ -13,5 +13,13 @@ router.get("/sign-up", authController.signUpGet);
 router.post("/sign-up", authController.signUpPost);
 // Handle log-in form submission
 router.post("/log-in", authController.logInPost);
+// render logged out page
+router.get('/log-out', authController.logOutGet);
+// render view posts page 
+router.get('/view-posts', authController.viewPostsGet);
+// render create posts page
+router.get('/create-post', authController.createPostGet);
+// handle create-post form submission 
+router.post('/create-post', authController.createPostPost);
 
 module.exports = router;

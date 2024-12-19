@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./view-posts.css">
+    <title>View Posts</title>
+</head>
+<body>
+    <%- include('navbar') %>
+    <div class="postsContainer">
+        <ul>
+            <% if (posts && posts.length > 0) { %>
+                <% posts.forEach((post) => { %>
+                    <li>
+                        <h2><%= post.title %></h2>
+                        <p class="text"><%= post.text %></p>
+                        <div class="timestampContainer">
+                            <p>Posted on: <%= new Date(post.timestamp).toLocaleString() %></p>
+                        </div>
+                    </li>
+                <% }) %>
+            <% } else { %>
+                <p>No posts available.</p>
+            <% } %>
+        </ul>
+    </div>
+</body>
+</html>
