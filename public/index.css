@@ -13,9 +13,39 @@ body {
 
 a {
     text-decoration: none;
+    
     color: #000;
 }
 
 span {
     text-decoration: underline;
+}
+
+input, label {
+    margin: 6px;
+}
+
+button {
+    margin: 8px;
+    padding: 5px;
+
+}
+button:hover {
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginContainer {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    bottom: 80px;
 }

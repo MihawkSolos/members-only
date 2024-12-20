@@ -17,9 +17,17 @@ router.post("/log-in", authController.logInPost);
 router.get('/log-out', authController.logOutGet);
 // render view posts page 
 router.get('/view-posts', authController.viewPostsGet);
+// handle view posts from submission to delete a post (members only)
+router.post('/view-posts', authController.viewPostsPost);
+
 // render create posts page
 router.get('/create-post', authController.createPostGet);
 // handle create-post form submission 
 router.post('/create-post', authController.createPostPost);
+// render members page 
+router.get('/members', authController.membersGet);
+// handle members post form submission
+router.post('/members', authController.membersPost);
+
 
 module.exports = router;

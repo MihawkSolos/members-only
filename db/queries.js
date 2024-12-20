@@ -41,8 +41,37 @@ async function addPost(title, text, user_id) {
     }
 }
 
+async function setMemberTrue(user_id) {
+    try {
+        await pool.query(`
+            UPDATE users 
+            SET member = $1
+            WHERE id = $2;
+            `, [true, user_id]
+        )
+    } catch (err){
+        console.error("Error changing member status: ", err);
+        throw err;
+    }
+}
+
+async function deletePost(post_id) {
+    try {
+        await pool.query(`
+            DELETE FROM posts 
+            WHERE id = $1;
+            `, [post_id]
+        )
+    } catch (err){
+        console.error("Error deleting post: ", err);
+        throw err;
+    }
+}
+
 module.exports = {
     createNewUser,
     getAllPosts,
     addPost,
+    setMemberTrue,
+    deletePost,
 }    

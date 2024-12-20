@@ -13,11 +13,25 @@
             <% if (posts && posts.length > 0) { %>
                 <% posts.forEach((post) => { %>
                     <li>
-                        <h2><%= post.title %></h2>
-                        <p class="text"><%= post.text %></p>
-                        <div class="timestampContainer">
-                            <p>Posted on: <%= new Date(post.timestamp).toLocaleString() %></p>
+                        <div class="imgContainer">
+                            <h2><%= post.title %></h2>
+                            <% if(user.member) { %>
+                                <form action="/view-posts" method="POST">
+                                    <!-- Hidden field with the post ID value -->
+                                    <input type="hidden" name="post_id" value="<%= post.id %>">
+                                    <button class='imgBtn' type="submit">
+                                        <img src="./delete.svg" alt="Delete">
+                                    </button>
+                                </form>
+                            <% } %>
                         </div>
+                        <p class="text"><%= post.text %></p>
+                        <% if(user.member){ %>
+                            <div class="timestampContainer">
+                                <p>By: <%= user.username %></p>
+                                <p><%= new Date(post.timestamp).toLocaleString() %></p>
+                            </div>
+                        <% } %>
                     </li>
                 <% }) %>
             <% } else { %>

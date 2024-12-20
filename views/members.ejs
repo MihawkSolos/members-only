@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./members.css">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('navbar') %>
+
+    <div class="memberContainer">
+        <% if(!user.member) { %>
+            <form action="/members" method="POST">
+                <label for="secret">Enter the secret code:</label>
+                <input type="password" name="secret" id="secret">
+                <br>
+                <% if (errorMessage) { %>
+                    <p style="color:red;"><%= errorMessage %></p>
+                <% } %>                
+                <button type="submit">Submit</button>
+            </form>
+        <% } else if(user.member) { %>
+            <h2>You are a secret member!</h2>
+        <% } %>
+    </div>
+</body>
+</html>

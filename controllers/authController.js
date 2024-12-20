@@ -75,6 +75,31 @@ async function viewPostsGet(req, res) {
     }
 }
 
+async function viewPostsPost(req, res) {
+    try {
+        const post_id = req.body.post_id;
+        await db.deletePost(post_id);
+        const posts = await db.getAllPosts();
+        res.render('view-posts', { posts: posts, user: req.user });
+    } catch (err) {
+        res.status(500).send('An error occurred while deleting post.');
+    }
+}
+
+async function membersGet(req, res) {
+    res.render('members', {user: req.user, errorMessage: ''});
+}
+
+async function membersPost(req, res) {
+    const user_id = req.user.id;
+    const {secret} = req.body;
+    if(secret === 'onepiece'){
+        await db.setMemberTrue(user_id);
+        res.render('members', {user: req.user, errorMessage: ''});
+    } else {
+        res.render('members', {user: req.user, errorMessage: 'Incorrect code'});
+    }
+}
 
 module.exports = {
     signUpGet,
@@ -84,4 +109,7 @@ module.exports = {
     createPostGet,
     createPostPost,
     viewPostsGet,
+    viewPostsPost,
+    membersGet,
+    membersPost,
 };

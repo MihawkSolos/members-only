@@ -11,18 +11,28 @@
       <h1>WELCOME BACK <span><%= user.username %></span></h1>
       <a href="/view-posts">View Posts</a>
       <a href="/create-post">Create Post</a>
+      <a href="/members">Members</a>
       <a href="/log-out">Log Out</a>
     </div>
   <% } else { %>
-    <h1>please log in</h1>
-    <form action="/log-in" method="POST">
-      <label for="username">Username</label>
-      <input id="username" name="username" placeholder="username" type="text" />
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" />
-      <button>Log In</button>
-    </form>
-    <a href="/sign-up"><span>sign up</span></a>
+    <div class="loginContainer">
+      <h1>Log in</h1>
+      <form action="/log-in" method="POST">
+        <div>
+          <label for="username">Username:</label>
+          <input id="username" name="username" placeholder="username" type="text" />
+          <br>
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input id="password" name="password" type="password" />
+          <br>
+        </div>
+        
+        <button>Log In</button>
+      </form>
+      <a href="/sign-up"><span>Sign up</span></a>
+    </div>
   <%}%>
 </body>
 </html>

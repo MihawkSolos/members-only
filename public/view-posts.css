@@ -11,8 +11,31 @@ li {
     border: 1px solid black;
     border-radius: 20px;
     margin: 20px;
+    width: 60vw;
+}
+
+.imgContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.imgBtn {
+    background: #fff;
+    height: 35px;
+    width: 35px;
+    border: none;
+}
+.imgBtn:hover {
+    cursor:pointer;
 }
 
 .text {
     font-size: 1em;
+}
+
+.timestampContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
